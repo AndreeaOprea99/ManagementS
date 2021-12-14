@@ -12,7 +12,7 @@ import './Dashboard.css'
 export default function Dashboard() {
   const { user } = useAuthContext()
   const { documents, error } = useCollection('projects')
-  const [filter, setFilter] = useState('all')
+  const [filter, setFilter] = useState('Tot')
 
   const changeFilter = (newFilter) => {
     setFilter(newFilter)
@@ -20,9 +20,9 @@ export default function Dashboard() {
   
   const projects = documents ? documents.filter(document => {
     switch(filter) {
-      case 'all':
+      case 'Tot':
         return true
-      case 'mine':
+      case 'Ale mele':
         let assignedToMe = false
         document.assignedUsersList.forEach(u => {
           if(u.id === user.uid) {
@@ -30,17 +30,16 @@ export default function Dashboard() {
           }
         })
         return assignedToMe
-      case 'development':
-      case 'design':
-      case 'sales':
-      case 'marketing':
+      case 'Dezvoltare':
+      case 'Design':
+      case 'Vanzari':
+      case 'Marketing':
         console.log(document.category, filter)
         return document.category === filter
       default:
         return true
-    }
-  }) : null
-
+    }}):null
+ 
   return (
     <div>
       <h2 className="page-title">Dashboard</h2>
