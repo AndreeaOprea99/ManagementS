@@ -40,12 +40,7 @@ export default function Sidebar() {
                 <span>Stocuri</span>
               </NavLink>
             </li>
-            <li>
-              <NavLink to="/transaction">
-                <img src={TransactionIcon} alt="transaction icon" />
-                <span>Tranzactii</span>
-              </NavLink>
-            </li>
+           
           </ul>
         </nav>
       </div>
